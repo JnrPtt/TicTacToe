@@ -23,7 +23,7 @@ public class TicTacToe {
             for (int j = 1; j < columns; j++){
                 System.out.print(board[i][j] + " ");
             }
-        System.out.println();
+            System.out.println();
         }
     }
 
@@ -50,6 +50,33 @@ public class TicTacToe {
         for (int i = 1; i < rows; i++){
             for (int j = 1; j < columns - 2; j++){
                 if (board[i][j] == playerMarker && board[i][j+1] == playerMarker && board[i][j+2] == playerMarker){
+                    System.out.println("El jugador ha ganado la partida.");
+                    gameFinished = true;
+                }
+            }
+        }
+
+        for (int i = 1; i < rows - 2; i++){
+            for (int j = 1; j < columns; j++){
+                if (board[i][j] == playerMarker && board[i+1][j] == playerMarker && board[i+2][j] == playerMarker){
+                    System.out.println("El jugador ha ganado la partida.");
+                    gameFinished = true;
+                }
+            }
+        }
+
+        for (int i = 1; i < rows - 2; i++){
+            for (int j = 1; j < columns - 2; j++){
+                if (board[i][j] == playerMarker && board[i+1][j+1] == playerMarker && board[i+2][j+2] == playerMarker){
+                    System.out.println("El jugador ha ganado la partida.");
+                    gameFinished = true;
+                }
+            }
+        }
+
+        for (int i = 1; i < rows - 2; i++){
+            for (int j = 2; j < columns; j++){
+                if (board[i][j] == playerMarker && board[i+1][j-1] == playerMarker && board[i+2][j-2] == playerMarker){
                     System.out.println("El jugador ha ganado la partida.");
                     gameFinished = true;
                 }
@@ -83,6 +110,33 @@ public class TicTacToe {
                 }
             }
         }
+
+        for (int i = 1; i < rows - 2; i++){
+            for (int j = 1; j < columns; j++){
+                if (board[i][j] == iaMarker && board[i+1][j] == iaMarker && board[i+2][j] == iaMarker){
+                    System.out.println("La IA ha ganado la partida.");
+                    gameFinished = true;
+                }
+            }
+        }
+
+        for (int i = 1; i < rows - 2; i++){
+            for (int j = 1; j < columns - 2; j++){
+                if (board[i][j] == iaMarker && board[i+1][j+1] == iaMarker && board[i+2][j+2] == iaMarker){
+                    System.out.println("La IA ha ganado la partida.");
+                    gameFinished = true;
+                }
+            }
+        }
+
+        for (int i = 1; i < rows - 2; i++){
+            for (int j = 2; j < columns; j++){
+                if (board[i][j] == iaMarker && board[i+1][j-1] == iaMarker && board[i+2][j-2] == iaMarker){
+                    System.out.println("La IA ha ganado la partida.");
+                    gameFinished = true;
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -91,6 +145,7 @@ public class TicTacToe {
         while (!gameFinished){
             player();
             checkPlayerWin();
+            if (gameFinished) break;
             iaPlayer();
             checkIa();
             printBoard();
@@ -98,4 +153,3 @@ public class TicTacToe {
         System.out.println("El juego ha terminado");
     }
 }
-
